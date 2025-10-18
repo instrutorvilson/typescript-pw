@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="../dist/calculadora.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <label>Informe primeiro número</label>
+        <input class="form-control" type="text" id="n1" placeholder="EX: 10" />
+
+        <label>Informe segundo número</label>
+        <input class="form-control" type="text" id="n2" placeholder="EX: 10.5" />
+        
+        <button class="btn btn-primary mt-3" id="soma">+</button>
+        <button class="btn btn-primary mt-3" id="subtracao">-</button>
+
+        <p id="resultado" class="mt-5"></p>
+    </div>
+    <script>
+        let btnSoma = document.getElementById("soma")
+        btnSoma.addEventListener('click',() => {
+            let n1 = Number.parseFloat(document.getElementById('n1').value)
+            let n2 = Number.parseFloat(document.getElementById('n2').value)
+            let resultado = somar(n1, n2)
+            document.getElementById('resultado').innerHTML = `Resultado: ${resultado}`
+        })
+
+        let btnSubtracao = document.getElementById("subtracao")
+        btnSubtracao.addEventListener('click',() => {
+           let n1 = Number.parseFloat(document.getElementById('n1').value)
+           let n2 = Number.parseFloat(document.getElementById('n2').value) 
+           let resultado = subtrair(n1, n2)
+           document.getElementById('resultado').innerHTML = `Resultado: ${resultado}`
+        })
+    </script>
+</body>
+</html>
