@@ -1,0 +1,8 @@
+npm install typescript
+
+npx tsc --init
+npx tsc 'file'
+
+npx tsc --watch
+
+1) criar um metodo que verifica se a pessoa é menor ou maior de idade
