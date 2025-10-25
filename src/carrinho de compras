@@ -1,0 +1,14 @@
+-> produto
+   - descricao
+   - preco
+
+-> carrinho
+  - item 
+  -- adicionar
+  -- remover
+  
+
+  interface item{
+    produto
+    quantidade
+  }
