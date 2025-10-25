@@ -1,9 +1,17 @@
 class Carro{
-    private marca:string =''
-    modelo:string = ''
-    placa:string = ''
-    cor:string = ''
-    kmlitro: number = 0
+    private marca:string
+    private modelo:string
+    private placa:string 
+    private cor:string
+    private kmlitro: number
+
+    constructor(marca: string, modelo: string, placa:string, cor:string, kmLitro: number){
+        this.marca = marca
+        this.modelo = modelo
+        this.placa = placa
+        this.cor = cor
+        this.kmlitro = kmLitro
+    }
 
     setMarca(marca:string):void{
         if(marca == ''){
@@ -16,6 +24,7 @@ class Carro{
         return this.marca
     }
 
+
     imprimir():void{
         console.log(`${this.marca} - ${this.modelo} - ${this.placa} - ${this.cor}`)
     }
@@ -25,7 +34,10 @@ class Carro{
     }
 }
 
-var objCarro = new Carro()
+var carro = new Carro('Ford','ka','lzz-0987','preta',15)
+carro.imprimir()
+
+/*var objCarro = new Carro()
 //objCarro.marca = 'Ford'
 objCarro.setMarca('Ford')
 objCarro.modelo = 'Ka'
@@ -35,4 +47,4 @@ objCarro.cor = 'preto'
 //objCarro.imprimir()
 console.log(objCarro.abastecimento(35))
 
-console.log(objCarro.getMarca())
+console.log(objCarro.getMarca())*/
