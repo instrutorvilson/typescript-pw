@@ -12,6 +12,7 @@
 <body onload="carregaTabela()">
     <div class="container">
         <form>
+            <input type="hidden" id="id" />
             <label for="nome">Informe nome</label>
             <input class="form-control" type="text" id="nome" placeholder="EX: Ana" required/>
     
@@ -22,6 +23,7 @@
             <input class="form-control" type="tel" id="fone" placeholder="EX: Ana"/>
  
             <input type="button" id="add" class="btn btn-outline-primary mt-3" value="Add" />
+            <input type="button" id="edit" class="btn btn-outline-primary mt-3" value="Edit" style="display: none;" />
         </form>   
         <hr />
         <table class="table table-stripped">
@@ -59,10 +61,43 @@
                 linhas += `<tr><td>${obj.id}</td><td>${obj.nome}</td>
                     <td>${obj.email}</td><td>${obj.fone}</td>
                     <td><button onclick='excluir(${obj.id});carregaTabela()'>excluir</button></td>
+                    <td><button onclick='editar(${obj.id});'>editar</button></td>
                     </tr>`               
             } 
             document.getElementsByTagName("tbody")[0].innerHTML = linhas
         }
+
+        var contato = ''
+        function editar(id){
+            contato = consultaUmContato(id)
+            document.getElementById('id').value = id
+            document.getElementById('nome').value = contato.nome
+            document.getElementById('email').value = contato.email
+            document.getElementById('fone').value = contato.fone
+
+            document.getElementById('add').style.display='none'
+            document.getElementById('edit').style.display='block'
+        }
+
+        document.getElementById('edit').addEventListener('click', () => {
+            
+           var inputNome = document.getElementById('nome')
+           var inputEmail = document.getElementById('email')
+           var inputFone = document.getElementById('fone')
+           var id = document.getElementById('id').value
+           
+           contato.id = id
+           contato.nome = inputNome.value
+           contato.email = inputEmail.value
+           contato.fone = inputFone.value
+                
+           console.log(contato)
+           alterarContato(contato)
+           carregaTabela()
+
+            document.getElementById('add').style.display='block'
+            document.getElementById('edit').style.display='none'
+        })
     </script>
 </body>
 </html>

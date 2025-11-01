@@ -16,6 +16,10 @@ class Contato {
      this.id = id
    }
 
+   public getId():number{
+     return this.id
+   }
+
    public setNome(nome:string): void{
      this.nome = nome
    }
@@ -52,13 +56,37 @@ function consultarTodos():Contato[]{
 }
 
 function excluir(id:number){
-  console.log(id)
     var contatos = JSON.parse(localStorage.getItem('contatos')) || []
     for(let i=0; i < contatos.length;i++){
       if(contatos[i].id === id){
         contatos.slice(i,1)
       }
-      console.log(contatos)
     }
     localStorage.setItem('contatos', JSON.stringify(contatos))
+}
+
+function consultaUmContato(id:number):Contato | null{
+  var contatos = JSON.parse(localStorage.getItem('contatos')) || []
+  for(let i=0; i < contatos.length;i++){
+    var obj = contatos[i]
+    if(obj.id === id){
+      return obj
+    }
+  }
+  return null
+}
+
+function alterarContato(contato:Contato):void{
+  var contatos = JSON.parse(localStorage.getItem('contatos')) || []
+  console.log(contato + '' + contato.getId)
+  for(let i=0; i < contatos.length;i++){
+    var obj = contatos[i]
+    console.log(obj.id + '' + contato.getId)
+    if(obj.id == contato.getId){
+      obj.nome = contato.getNome
+      obj.email =contato.getEmail
+      obj.fone =contato.getFone
+    }
+  }
+  localStorage.setItem('contatos', JSON.stringify(contatos))
 }
