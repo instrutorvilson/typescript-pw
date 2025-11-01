@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" 
+    crossorigin="anonymous">
+    <script src="../dist/contato.js"></script>    
+</head>
+<body onload="carregaTabela()">
+    <div class="container">
+        <form>
+            <label for="nome">Informe nome</label>
+            <input class="form-control" type="text" id="nome" placeholder="EX: Ana" required/>
+    
+            <label for="email">Informe email</label>
+            <input class="form-control" type="email" id="email" placeholder="EX: ana@gmail.com" required />
+    
+            <label for="fone">Informe fone</label>
+            <input class="form-control" type="tel" id="fone" placeholder="EX: Ana"/>
+ 
+            <input type="button" id="add" class="btn btn-outline-primary mt-3" value="Add" />
+        </form>   
+        <hr />
+        <table class="table table-stripped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Fone</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>     
+    </div>
+    <script>
+        document.getElementById("add").addEventListener('click',(e)=> {
+            e.preventDefault()
+           var inputNome = document.getElementById('nome')
+           var inputEmail = document.getElementById('email')
+           var inputFone = document.getElementById('fone')
+           var ct = new Contato(1,inputNome.value,inputEmail.value,inputFone.value)
+            novoContato(ct)
+            
+            alert(`${ct.getNome()} salvo com sucesso`)
+            carregaTabela()
+        })
+                
+        function carregaTabela(){
+            const dados = consultarTodos()  
+            var linhas = ''          
+            for (let i = 0; i < dados.length; i++) {
+                var obj = dados[i]
+                linhas += `<tr><td>${obj.id}</td><td>${obj.nome}</td>
+                    <td>${obj.email}</td><td>${obj.fone}</td>
+                    <td><button onclick='excluir(${obj.id});carregaTabela()'>excluir</button></td>
+                    </tr>`               
+            } 
+            document.getElementsByTagName("tbody")[0].innerHTML = linhas
+        }
+    </script>
+</body>
+</html>

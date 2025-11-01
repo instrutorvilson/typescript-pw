@@ -1,3 +1,5 @@
+import { getConstantValue } from "typescript"
+
 class Contato {
    private id:number
    private nome:string
@@ -47,4 +49,16 @@ function novoContato(contato: Contato){
 
 function consultarTodos():Contato[]{
   return JSON.parse(localStorage.getItem('contatos')) || []
+}
+
+function excluir(id:number){
+  console.log(id)
+    var contatos = JSON.parse(localStorage.getItem('contatos')) || []
+    for(let i=0; i < contatos.length;i++){
+      if(contatos[i].id === id){
+        contatos.slice(i,1)
+      }
+      console.log(contatos)
+    }
+    localStorage.setItem('contatos', JSON.stringify(contatos))
 }
