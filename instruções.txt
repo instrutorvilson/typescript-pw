@@ -1,0 +1,26 @@
+cadastro de contatos
+-> novo
+-> listar
+-> editar
+-> excluir
+
+cadastro de compromissos
+-> novo
+-> listar
+-> confirmar
+-> cancelar
+-> excluir
+
+Contatos
+ -> id
+ -> nome
+ -> email
+ -> fone
+
+Compromissos
+-> id
+-> data
+-> hora
+-> local
+-> descrição
+-> contato
