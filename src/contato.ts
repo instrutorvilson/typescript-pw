@@ -65,7 +65,7 @@ function excluir(id:number){
     localStorage.setItem('contatos', JSON.stringify(contatos))
 }
 
-function consultaUmContato(id:number):Contato | null{
+function consultaUmContato(id:number):any | null{
   var contatos = JSON.parse(localStorage.getItem('contatos')) || []
   for(let i=0; i < contatos.length;i++){
     var obj = contatos[i]
@@ -76,16 +76,14 @@ function consultaUmContato(id:number):Contato | null{
   return null
 }
 
-function alterarContato(contato:Contato):void{
+function alterarContato(contato:any):void{
   var contatos = JSON.parse(localStorage.getItem('contatos')) || []
-  console.log(contato + '' + contato.getId)
   for(let i=0; i < contatos.length;i++){
     var obj = contatos[i]
-    console.log(obj.id + '' + contato.getId)
-    if(obj.id == contato.getId){
-      obj.nome = contato.getNome
-      obj.email =contato.getEmail
-      obj.fone =contato.getFone
+    if(obj.id == contato.id){
+      obj.nome = contato.nome
+      obj.email =contato.email
+      obj.fone =contato.fone
     }
   }
   localStorage.setItem('contatos', JSON.stringify(contatos))
