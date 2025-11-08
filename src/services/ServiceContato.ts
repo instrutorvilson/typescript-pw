@@ -16,4 +16,10 @@ export class ServiceContato {
        })
        return response.json()
     }
+
+    static async excluir(id:any): Promise<void> {
+        await fetch(`${API_URL}/${id}`,{
+            method: 'DELETE'
+        })
+    }
 }
