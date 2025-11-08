@@ -1,0 +1,6 @@
+{
+    "contatos":[
+        {"id":1,"nome":"ana", "email":"ana@gmail.com" },
+        {"id":2,"nome":"maria", "email":"maria@gmail.com" }
+    ]
+}
