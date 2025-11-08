@@ -6,6 +6,11 @@ const lista = document.getElementById("lista-contatos");
 
 form.onsubmit = async (e) => {
     e.preventDefault();
+
+    if(localStorage.getItem('userLogado') == null){
+       window.location.href = 'login.html' 
+       return
+    }
     
     const novo: Contato = {
         nome: (document.getElementById("nome") as HTMLFormElement).value,
